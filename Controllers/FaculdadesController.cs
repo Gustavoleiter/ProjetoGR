@@ -68,5 +68,26 @@ namespace ProjetoGR.Controllers
 
         }
         
+        [HttpPost]
+        public async Task<IActionResult> Add(Faculdade novaFaculdade)
+        {
+            try
+            {
+                if(novaFaculdade.Id != null)
+                {
+                    throw new Exception("Id da Faculdade tem que ser valido");
+
+                }
+                await _context.Personagens.AddAsync(novaFaculdade);
+                await _context.SaveChangesAsync();
+
+                return Ok(novaFaculdade.Id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

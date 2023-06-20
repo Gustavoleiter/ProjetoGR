@@ -72,5 +72,25 @@ namespace ProjetoGR.Controllers
             }
 
         }
+       [HttpPost]
+        public async Task<IActionResult> Add(Curso novoCurso)
+        {
+            try
+            {
+                if(novoCurso.Id != null)
+                {
+                    throw new Exception("Id do curso tem que ser valido");
+
+                }
+                await _context.Personagens.AddAsync(novoCurso);
+                await _context.SaveChangesAsync();
+
+                return Ok(novoCurso.Id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

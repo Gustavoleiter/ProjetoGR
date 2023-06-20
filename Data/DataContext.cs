@@ -34,6 +34,7 @@ namespace ProjetoGR.Data
             new Curso (){ Id = 8, NomeCurso = "Introdução à Inteligência Artificial", Descrição = "Um curso introdutório sobre os fundamentos e aplicações da inteligência artificial.", DataInicio = new DateTime(2023, 10, 1), DataTermino = new DateTime(2023, 9, 30), TipoUrgencia = TipoUrgencia.Alta}
 
             );
+
             Usuario user = new Usuario();
             Criptografia.CriarPasswordHash("123456", out byte[] hash, out byte[]salt);
             user.Id = 1;
@@ -44,7 +45,6 @@ namespace ProjetoGR.Data
             user.Perfil = "chefe";
             user.Email = "seuEmail@gmail.com";
             
-
             modelBuilder.Entity<Usuario>().HasData(user);            
             //Fim da criação do usuário padrão.   
 
