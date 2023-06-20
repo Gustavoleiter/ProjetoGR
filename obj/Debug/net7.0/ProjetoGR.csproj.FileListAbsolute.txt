@@ -78,11 +78,6 @@ C:\Users\User\OneDrive\Documentos\ProjetoGR\obj\Debug\net7.0\refint\ProjetoGR.dl
 C:\Users\User\OneDrive\Documentos\ProjetoGR\obj\Debug\net7.0\ProjetoGR.pdb
 C:\Users\User\OneDrive\Documentos\ProjetoGR\obj\Debug\net7.0\ProjetoGR.genruntimeconfig.cache
 C:\Users\User\OneDrive\Documentos\ProjetoGR\obj\Debug\net7.0\ref\ProjetoGR.dll
-C:\Users\User\OneDrive\Documentos\ProjetoGR\bin\Debug\net7.0\publish\web.config
-C:\Users\User\OneDrive\Documentos\ProjetoGR\bin\Debug\net7.0\publish\appsettings.Development.json
-C:\Users\User\OneDrive\Documentos\ProjetoGR\bin\Debug\net7.0\publish\appsettings.json
-C:\Users\User\OneDrive\Documentos\ProjetoGR\bin\Debug\net7.0\publish\ProjetoGR.deps.json
-C:\Users\User\OneDrive\Documentos\ProjetoGR\bin\Debug\net7.0\publish\ProjetoGR.runtimeconfig.json
 C:\Users\EtecHAS\Desktop\Nova pasta\ProjetoGR\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\EtecHAS\Desktop\Nova pasta\ProjetoGR\bin\Debug\net7.0\appsettings.json
 C:\Users\EtecHAS\Desktop\Nova pasta\ProjetoGR\bin\Debug\net7.0\ProjetoGR.exe

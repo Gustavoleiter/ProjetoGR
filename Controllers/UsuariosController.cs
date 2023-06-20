@@ -194,6 +194,28 @@ namespace ProjetoGR.Controllers
             }
 
         }
+         public async Task<IActionResult> Update(Usuario novoUsuario)
+            {
+                try
+                {
+            
+                    
+                    if (novoUsuario.Id == null)
+                    {
+                        return BadRequest("Usuario não encontrado"); // Caso o registro não seja encontrado
+                    }
+
+                    
+                    _context.Estagios.Update(novoUsuario);
+                    int linhasAfetadas = await _context.SaveChangesAsync();
+
+                    return Ok(linhasAfetadas);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
+            }
 
         
     }
