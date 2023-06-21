@@ -9,5 +9,6 @@ namespace ProjetoGR.Models
         public DateTime DataInicio { get; set; } 
         public DateTime DataTermino { get; set; } 
         public TipoUrgencia TipoUrgencia { get; set; }
+         public List<Usuario> Usuario { get; set; }
     }
 }

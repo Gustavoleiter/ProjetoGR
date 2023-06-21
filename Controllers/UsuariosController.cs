@@ -206,7 +206,7 @@ namespace ProjetoGR.Controllers
                     }
 
                     
-                    _context.Estagios.Update(novoUsuario);
+                    _context.Usuarios.Update(novoUsuario);
                     int linhasAfetadas = await _context.SaveChangesAsync();
 
                     return Ok(linhasAfetadas);
@@ -216,6 +216,40 @@ namespace ProjetoGR.Controllers
                     return BadRequest(ex.Message);
                 }
             }
+
+            [HttpPost]
+        public async Task<IActionResult> Update(Curso novoCurso)
+        {
+            try
+            {
+                if (novoCurso.Id == null)
+                    {
+                        return BadRequest("Curso não encontrado"); // Caso o registro não seja encontrado
+                    }
+
+                Usuario u = await _context.Usuarios.FirstOrDefaultAsync(u => u.Id == novoCurso.Id);
+
+                if (u == null)
+                   throw new System.Exception("Não existe personagem com Id informado");
+                
+                
+                 Curso buscaCurso = await _context.Cursos.FirstOrDefaultAsync(c => c.Id == novoCurso.Id);
+
+                if (buscaCurso != null)
+                    throw new Exception("O Personagem informado já contém uma arma atribuída a ele.");
+
+                    _context.Cursos.Update(novoCurso);
+                    int linhasAfetadas = await _context.SaveChangesAsync();
+
+                    return Ok(linhasAfetadas);
+
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         
     }

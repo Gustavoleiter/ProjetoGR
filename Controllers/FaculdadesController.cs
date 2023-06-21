@@ -92,7 +92,7 @@ namespace ProjetoGR.Controllers
                 }
             }
             [HttpPut]
-            public async Task<IActionResult> Update(Curso novaFaculdade)
+            public async Task<IActionResult> Update(Faculdade novaFaculdade)
             {
                 try
                 {
@@ -100,11 +100,11 @@ namespace ProjetoGR.Controllers
                     
                     if (novaFaculdade.Id == null)
                     {
-                        return BadRequest("Curso não encontrado"); // Caso o registro não seja encontrado
+                        return BadRequest("Faculdade não encontrada"); // Caso o registro não seja encontrado
                     }
 
                     
-                    _context.Estagios.Update(novaFaculdade);
+                    _context.Faculdades.Update(novaFaculdade);
                     int linhasAfetadas = await _context.SaveChangesAsync();
 
                     return Ok(linhasAfetadas);
@@ -114,6 +114,7 @@ namespace ProjetoGR.Controllers
                     return BadRequest(ex.Message);
                 }
             }
+            
 
     }
 }

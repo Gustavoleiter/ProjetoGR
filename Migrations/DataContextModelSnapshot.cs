@@ -22,6 +22,51 @@ namespace ProjetoGR.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("CursoUsuario", b =>
+                {
+                    b.Property<int>("CursosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CursosId", "UsuarioId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("CursoUsuario");
+                });
+
+            modelBuilder.Entity("EstagioUsuario", b =>
+                {
+                    b.Property<int>("EstagiosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EstagiosId", "UsuarioId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("EstagioUsuario");
+                });
+
+            modelBuilder.Entity("FaculdadeUsuario", b =>
+                {
+                    b.Property<int>("FaculdadesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FaculdadesId", "UsuarioId");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("FaculdadeUsuario");
+                });
+
             modelBuilder.Entity("ProjetoGR.Models.Curso", b =>
                 {
                     b.Property<int>("Id")
@@ -144,12 +189,7 @@ namespace ProjetoGR.Migrations
                     b.Property<int>("TipoUrgencia")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Estagios");
 
@@ -227,12 +267,7 @@ namespace ProjetoGR.Migrations
                     b.Property<int>("TipoUrgencia")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuarioId");
 
                     b.ToTable("Faculdades");
 
@@ -283,9 +318,6 @@ namespace ProjetoGR.Migrations
                     b.Property<int>("Idade")
                         .HasColumnType("int");
 
-                    b.Property<byte[]>("PasswordHash")
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("varbinary(max)");
 
@@ -313,8 +345,7 @@ namespace ProjetoGR.Migrations
                             Id = 1,
                             Email = "seuEmail@gmail.com",
                             Idade = 0,
-                            PasswordHash = new byte[] { 49, 62, 80, 54, 202, 244, 30, 234, 164, 158, 36, 158, 13, 166, 168, 152, 165, 157, 109, 53, 244, 192, 79, 25, 50, 16, 152, 168, 201, 109, 104, 196, 179, 121, 25, 132, 222, 214, 248, 242, 188, 185, 182, 138, 35, 142, 133, 30, 163, 207, 104, 206, 241, 162, 163, 186, 218, 111, 104, 56, 66, 103, 36, 220 },
-                            PasswordSalt = new byte[] { 60, 2, 61, 161, 80, 28, 110, 240, 130, 117, 209, 117, 109, 229, 95, 62, 212, 207, 57, 236, 35, 66, 0, 79, 119, 97, 148, 33, 61, 90, 26, 137, 192, 179, 204, 41, 181, 167, 234, 10, 175, 191, 232, 176, 78, 188, 127, 134, 154, 24, 32, 77, 85, 88, 129, 42, 108, 56, 243, 157, 159, 58, 108, 159, 254, 1, 107, 210, 246, 127, 137, 124, 29, 136, 206, 247, 102, 175, 199, 121, 53, 143, 92, 171, 226, 91, 179, 165, 61, 54, 137, 200, 105, 39, 229, 199, 199, 244, 25, 161, 93, 151, 122, 37, 82, 73, 88, 53, 0, 226, 233, 222, 193, 137, 194, 174, 141, 169, 35, 96, 215, 84, 25, 205, 9, 89, 110, 64 },
+                            PasswordSalt = new byte[] { 32, 40, 95, 82, 78, 241, 165, 197, 159, 159, 0, 110, 23, 112, 236, 11, 209, 177, 99, 203, 112, 213, 48, 70, 175, 240, 17, 88, 124, 25, 45, 102, 247, 81, 104, 213, 205, 236, 54, 122, 5, 236, 218, 6, 144, 86, 199, 6, 147, 152, 42, 132, 7, 206, 134, 198, 217, 173, 2, 35, 111, 28, 50, 198, 25, 104, 151, 254, 240, 18, 211, 179, 253, 215, 88, 51, 245, 150, 224, 19, 9, 3, 52, 68, 142, 151, 21, 43, 25, 20, 0, 37, 0, 3, 29, 13, 121, 90, 9, 37, 22, 222, 100, 85, 246, 109, 58, 203, 225, 72, 29, 42, 139, 198, 70, 58, 137, 41, 47, 180, 63, 68, 89, 8, 167, 66, 1, 152 },
                             PasswordString = "",
                             Perfil = "chefe",
                             TempoEstudo = new TimeSpan(0, 0, 0, 0, 0),
@@ -322,25 +353,49 @@ namespace ProjetoGR.Migrations
                         });
                 });
 
-            modelBuilder.Entity("ProjetoGR.Models.Estagio", b =>
+            modelBuilder.Entity("CursoUsuario", b =>
                 {
+                    b.HasOne("ProjetoGR.Models.Curso", null)
+                        .WithMany()
+                        .HasForeignKey("CursosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ProjetoGR.Models.Usuario", null)
-                        .WithMany("Estagios")
-                        .HasForeignKey("UsuarioId");
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjetoGR.Models.Faculdade", b =>
+            modelBuilder.Entity("EstagioUsuario", b =>
                 {
+                    b.HasOne("ProjetoGR.Models.Estagio", null)
+                        .WithMany()
+                        .HasForeignKey("EstagiosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ProjetoGR.Models.Usuario", null)
-                        .WithMany("Faculdades")
-                        .HasForeignKey("UsuarioId");
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
-            modelBuilder.Entity("ProjetoGR.Models.Usuario", b =>
+            modelBuilder.Entity("FaculdadeUsuario", b =>
                 {
-                    b.Navigation("Estagios");
+                    b.HasOne("ProjetoGR.Models.Faculdade", null)
+                        .WithMany()
+                        .HasForeignKey("FaculdadesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("Faculdades");
+                    b.HasOne("ProjetoGR.Models.Usuario", null)
+                        .WithMany()
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

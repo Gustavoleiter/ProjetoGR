@@ -55,6 +55,20 @@ namespace ProjetoGR.Controllers
                 {
                     Estagio aRemover = await _context.Estagios.FirstOrDefaultAsync(a => a.Id == id);
 
+                    if ( aRemover == null)
+                    {
+                    return BadRequest("Estagio não encontrado"); // Caso o curso não seja encontrado
+                    }
+
+                    
+                    /*Usuario u = await _context.Usuarios.FirstOrDefaultAsync(u => u.Estagios[id] == u.Id);
+
+                    if ( u != null)
+
+                    {
+                        throw new Exception("O Estagio não pode ser deletado porque está associado a um usuário.");
+                    }
+                    */
                     _context.Estagios.Remove(aRemover);
                     int linhasAfetedas = await _context.SaveChangesAsync();
                     return Ok(linhasAfetedas);

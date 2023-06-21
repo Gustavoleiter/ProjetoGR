@@ -108,7 +108,7 @@ namespace ProjetoGR.Controllers
                     }
 
                     
-                    _context.Estagios.Update(novoCurso);
+                    _context.Cursos.Update(novoCurso);
                     int linhasAfetadas = await _context.SaveChangesAsync();
 
                     return Ok(linhasAfetadas);
